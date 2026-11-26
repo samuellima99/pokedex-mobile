@@ -80,7 +80,7 @@ export default function PokemonScreen({ id, onBack }: Props) {
         <Text style={styles.number}>{formatNumber(pokemon.id)}</Text>
         <Text style={styles.name}>{formatName(pokemon.name)}</Text>
 
-        <View style={styles.types}>{/* TODO Questão 04 */}</View>
+        <View style={styles.types}></View>
       </View>
 
       <View style={styles.details}>

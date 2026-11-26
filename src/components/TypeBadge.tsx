@@ -8,7 +8,11 @@ type Props = {
 
 // TODO Questão 04
 export default function TypeBadge({ type }: Props) {
-  return null;
+  return (
+  <View style={styles.badge}>{typeInfo(type).label}
+    <Text style={styles.label}>{typeInfo(type).color}</Text>
+  </View>
+  )
 }
 
 const styles = StyleSheet.create({
