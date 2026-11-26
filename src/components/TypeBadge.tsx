@@ -6,9 +6,14 @@ type Props = {
   type: string;
 };
 
-// TODO Questão 04
 export default function TypeBadge({ type }: Props) {
-  return null;
+  const info = typeInfo(type);
+
+  return (
+    <View style={[styles.badge, { backgroundColor: info.color }]}>
+      <Text style={styles.label}>{info.label}</Text>
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({
