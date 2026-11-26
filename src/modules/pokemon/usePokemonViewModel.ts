@@ -7,20 +7,29 @@ export function usePokemonViewModel(id: number) {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
+    let active = true;
+
     async function load() {
+      setLoading(true);
+      setError(null);
+      setPokemon(null);
       console.log("Carregando Pokémon", id);
       try {
         const data = await fetchPokemon(id);
-        setPokemon(data);
+        if (active) setPokemon(data);
       } catch (e) {
-        setError((e as Error).message);
+        if (active) setError((e as Error).message);
       } finally {
-        setLoading(false);
+        if (active) setLoading(false);
       }
     }
 
     load();
-  });
+
+    return () => {
+      active = false;
+    };
+  }, [id]);
 
   return { pokemon, loading, error };
 }
