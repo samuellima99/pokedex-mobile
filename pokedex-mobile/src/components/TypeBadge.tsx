@@ -1,0 +1,34 @@
+import { View, Text, StyleSheet } from "react-native";
+import { typeInfo } from "../utils";
+import { colors, fonts } from "../theme";
+
+type Props = {
+  type: string;
+};
+
+export default function TypeBadge({ type }: Props) {
+  const info = typeInfo(type);
+
+  return (
+    <View style={[styles.badge, { backgroundColor: info.color }]}>
+      <Text style={styles.label}>{info.label}</Text>
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  badge: {
+    paddingHorizontal: 8,
+    paddingVertical: 3,
+    borderRadius: 9,
+    borderWidth: 2,
+    borderColor: "rgba(255, 255, 255, 0.9)",
+  },
+  label: {
+    fontFamily: fonts.bold,
+    fontSize: 10.5,
+    letterSpacing: 0.3,
+    textTransform: "uppercase",
+    color: colors.badgeText,
+  },
+});
