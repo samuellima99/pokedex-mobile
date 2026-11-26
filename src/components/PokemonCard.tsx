@@ -10,21 +10,62 @@ type Props = {
 };
 
 export default function PokemonCard({ pokemon, onPress }: Props) {
+  // sprite pode vir como pokemon.sprite ou pokemon.sprites
+  const spriteSource =
+    // caso exista sprite
+    (pokemon as any).sprite ??
+    // caso exista sprites (PokeAPI costuma ser sprites: { other: { ... } })
+    (pokemon as any).sprites?.other?.["official-artwork"]?.front_default ??
+    (pokemon as any).sprites?.front_default ??
+    undefined;
+
+  // normaliza types pra array de string
+  const types = (() => {
+    const t = (pokemon as any).types;
+    if (!t) return [];
+
+    // types: string[]
+    if (Array.isArray(t) && typeof t[0] === "string") return t;
+
+    // types: [{ type: { name: string } }]
+    if (
+      Array.isArray(t) &&
+      t[0] &&
+      typeof t[0] === "object" &&
+      t[0].type?.name
+    ) {
+      return t.map((x: any) => x.type.name);
+    }
+
+    return [];
+  })();
+
   return (
     <Pressable
       style={({ pressed }) => [styles.card, pressed && styles.cardPressed]}
       onPress={onPress}
     >
-      <Image
-        source={pokemon.sprite}
-        style={styles.sprite}
-        resizeMode="contain"
-      />
-      <Text style={styles.number}>{formatNumber(pokemon.id)}</Text>
+      {spriteSource ? (
+        <Image
+          source={{ uri: spriteSource }}
+          style={styles.sprite}
+          resizeMode="contain"
+        />
+      ) : (
+        <View style={styles.sprite} />
+      )}
+
+      <Text style={styles.number}>{formatNumber((pokemon as any).id)}</Text>
+
       <Text style={styles.name} numberOfLines={1}>
-        {formatName(pokemon.name)}
+        {formatName((pokemon as any).name)}
       </Text>
-      <View style={styles.types}>{/* TODO Questão 04 */}</View>
+
+      <View style={styles.types}>
+        {types.map((t) => (
+          <TypeBadge key={t} type={t} />
+        ))}
+      </View>
     </Pressable>
   );
 }
