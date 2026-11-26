@@ -61,7 +61,7 @@ export default function PokemonScreen({ id, onBack }: Props) {
       </View>
     );
   }
-
+  console.log()
   const color = typeInfo(pokemon.types[0]).color;
   const total = sumStats(pokemon.stats);
 
@@ -80,7 +80,14 @@ export default function PokemonScreen({ id, onBack }: Props) {
         <Text style={styles.number}>{formatNumber(pokemon.id)}</Text>
         <Text style={styles.name}>{formatName(pokemon.name)}</Text>
 
-        <View style={styles.types}>{/* TODO Questão 04 */}</View>
+        <View style={styles.types}>
+          {
+          pokemon.types.map((type) => (
+            <View key={type}>
+              <Text>{TypeBadge({type})}</Text>
+            </View>
+          ))}
+        
       </View>
 
       <View style={styles.details}>
@@ -109,7 +116,9 @@ export default function PokemonScreen({ id, onBack }: Props) {
           <Text style={styles.totalValue}>{total}</Text>
         </View>
       </View>
+      </View>
     </ScrollView>
+
   );
 }
 

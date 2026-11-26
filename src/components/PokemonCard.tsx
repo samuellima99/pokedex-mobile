@@ -24,7 +24,14 @@ export default function PokemonCard({ pokemon, onPress }: Props) {
       <Text style={styles.name} numberOfLines={1}>
         {formatName(pokemon.name)}
       </Text>
-      <View style={styles.types}>{/* TODO Questão 04 */}</View>
+       <View style={styles.types}>
+                {
+                pokemon.types.map((type) => (
+                  <View key={type}>
+                    <Text>{TypeBadge({type})}</Text>
+                  </View>
+                ))}
+            </View>
     </Pressable>
   );
 }

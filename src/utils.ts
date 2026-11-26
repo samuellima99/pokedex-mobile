@@ -26,7 +26,7 @@ export function formatWeight(weight: number): string {
 export function sumStats(stats: Stat[]): number {
   let total = 0;
   for (const stat of stats) {
-    total = stat.value;
+    total += stat.value;
   }
   return total;
 }

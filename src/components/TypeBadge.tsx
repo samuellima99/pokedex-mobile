@@ -8,7 +8,11 @@ type Props = {
 
 // TODO Questão 04
 export default function TypeBadge({ type }: Props) {
-  return null;
+  return (
+    <View style={[styles.badge, { backgroundColor: typeInfo(type).color}]}>
+      <Text style={styles.label}></Text>
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({
@@ -18,6 +22,7 @@ const styles = StyleSheet.create({
     borderRadius: 9,
     borderWidth: 2,
     borderColor: "rgba(255, 255, 255, 0.9)",
+  
   },
   label: {
     fontFamily: fonts.bold,

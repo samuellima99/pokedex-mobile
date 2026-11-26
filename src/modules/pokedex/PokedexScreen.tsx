@@ -66,6 +66,7 @@ export default function PokedexScreen({ onSelect }: Props) {
             placeholderTextColor={colors.textMuted}
             autoCapitalize="none"
             autoCorrect={false}
+            onChangeText={setSearch}
           />
           <SearchIcon />
         </View>
@@ -79,7 +80,7 @@ export default function PokedexScreen({ onSelect }: Props) {
       >
         <Pressable
           style={[styles.chip, selectedType === "" && styles.chipAll]}
-          onPress={() => setSelectedType("")}
+          onPress={() => setSelectedType(search)}
         >
           <Text
             style={[styles.chipText, selectedType === "" && styles.chipAllText]}
@@ -102,6 +103,7 @@ export default function PokedexScreen({ onSelect }: Props) {
                 },
               ]}
               onPress={() => setSelectedType(type)}
+
             >
               {active ? null : (
                 <View style={[styles.dot, { backgroundColor: info.color }]} />
