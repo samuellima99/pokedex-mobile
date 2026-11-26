@@ -4,7 +4,7 @@ import { TYPE_NAMES } from "./utils";
 
 // true  = uses the data saved in mock.ts (works without internet)
 // false = uses the real PokéAPI
-export const USE_MOCK = false;
+export const USE_MOCK = true;
 
 const BASE_URL = "https://pokeapi.co/api/v2";
 const IMAGES_URL =
