@@ -64,23 +64,23 @@ Encontre a causa de cada problema e corrija.
 
 ### Questão 01 - Busca e filtro por tipo não funcionam
 
-**a) Busca (`src/modules/pokedex/PokedexScreen.tsx`):** ao digitar em "Buscar Pokémon pelo nome", nada aparece no campo e a lista não muda.
+**a) Busca:** ao digitar em "Buscar Pokémon pelo nome", nada aparece no campo e a lista não muda.
 
 Faça o texto aparecer e filtrar a lista. Esperado: ao digitar `char`, sobram **Charmander**, **Charmeleon** e **Charizard**, e o contador mostra **3 Pokémon**.
 
-**b) Filtro por tipo (`src/modules/pokedex/usePokedexViewModel.ts`):** ao tocar em um tipo, como **Fogo**, o botão fica colorido, mas nenhum card aparece. Em **Dragão**, aparecem só Dragonair e Dragonite. O filtro deve mostrar os Pokémon que **têm** o tipo escolhido.
+**b) Filtro por tipo:** ao tocar em um tipo, como **Fogo**, o botão fica colorido, mas nenhum card aparece. Em **Dragão**, aparecem só Dragonair e Dragonite. O filtro deve mostrar os Pokémon que **têm** o tipo escolhido.
 
 Esperado: Fogo → **12 Pokémon** (Charmander, Charmeleon, Charizard, Vulpix...); Dragão → **Dratini**, **Dragonair** e **Dragonite**; Todos → **151 Pokémon** de novo.
 
 Dica: cada Pokémon tem a lista `types` (ex.: `["fire", "flying"]`), e `selectedType` guarda o tipo escolhido (ex.: `"fire"`).
 
-### Questão 02 - Detalhes carregam sem parar (`src/modules/pokemon/usePokemonViewModel.ts`)
+### Questão 02 - Detalhes carregam sem parar
 
 Ao tocar no Charizard, o terminal (ou o console do navegador, no Expo Web) mostra `Carregando Pokémon 6` centenas de vezes, sem parar.
 
 Carregue o Pokémon **uma vez** ao abrir a tela, e de novo só se o `id` mudar. Esperado: `Carregando Pokémon 6` aparece **uma vez**.
 
-### Questão 03 - Total dos status errado (`src/utils.ts`)
+### Questão 03 - Total dos status errado
 
 Na tela do Charizard aparece **Total 100**, mas os status dele são 78, 84, 78, 109, 85 e 100, que somam **534**. O total está saindo igual ao último status. Corrija a função `sumStats`.
 
