@@ -62,6 +62,8 @@ export default function PokedexScreen({ onSelect }: Props) {
         <View style={styles.searchBar}>
           <TextInput
             style={styles.input}
+            value={search}
+            onChangeText={setSearch}
             placeholder="Buscar Pokémon pelo nome"
             placeholderTextColor={colors.textMuted}
             autoCapitalize="none"
