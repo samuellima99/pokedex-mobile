@@ -20,7 +20,7 @@ export function usePokemonViewModel(id: number) {
     }
 
     load();
-  });
+  }, [id]);
 
   return { pokemon, loading, error };
 }

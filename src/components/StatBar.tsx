@@ -7,9 +7,15 @@ type Props = {
   stat: Stat;
 };
 
-// TODO Questão 05
+
 export default function StatBar({ stat }: Props) {
-  return null;
+  return <View style={styles.row}>
+    <Text style={styles.label}>{statInfo(stat.name).label}</Text>
+    <Text style={styles.value}>{stat.value}</Text>
+    <View style={styles.track}>
+      <View style={[styles.fill, { width: `${(stat.value / MAX_STAT) * 100}%`, backgroundColor: statInfo(stat.name).color }]} />
+    </View>
+  </View>;
 }
 
 const styles = StyleSheet.create({

@@ -66,6 +66,8 @@ export default function PokedexScreen({ onSelect }: Props) {
             placeholderTextColor={colors.textMuted}
             autoCapitalize="none"
             autoCorrect={false}
+            value={search}
+            onChangeText={setSearch}
           />
           <SearchIcon />
         </View>
